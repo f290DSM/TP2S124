@@ -5,7 +5,7 @@
 
 ## Descrição da Atividade
 
-Para este desafio vocês deverão utilizar os conhecimentos adquiridos para resolver da melhor forma possivel uma partida de Jokenpo com a variação que contenha o Lagarto e Spock, conforme a ilustração acima.
+Para este desafio vocês deverão utilizar os conhecimentos adquiridos para resolver da melhor forma possivel uma partida de Jokenpo.
 
 Utilizem a linguagem de sua preferencia e o paradigma de programação ao qual esteja mais confortável.
 
@@ -15,13 +15,11 @@ Utilizem a linguagem de sua preferencia e o paradigma de programação ao qual e
 > Programação Clássica
 
 ```java
-public class Main {
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Scanner in = new Scanner(System.in);
-        System.out.println("Escolha uma das opções [ 1-PAPEL, 2-TESOURA, 3-PEDRA, 4-LAGARTO, 5-SPOCK ]\n");
+        System.out.println("Escolha uma das opções [ 1-PAPEL, 2-TESOURA, 3-PEDRA]\n");
         int jogada = in.nextInt();
-        int computador = new Random().nextInt(5) + 1;
+        int computador = new Random().nextInt(3) + 1;
         System.out.println("O COMPUTADOR escolheu: " + computador);
 
         if (jogada == 1 && computador == 1) {
@@ -29,33 +27,21 @@ public class Main {
         } else if (jogada == 1 && computador == 2) {
             System.out.println("Perdeu! Tesoura corta o papel!");
         } else if (jogada == 1 && computador == 3) {
-            System.out.println("Ganhou! Pedra embrulha o papel!");
-        } else if (jogada == 1 && computador == 4) {
-            System.out.println("Perdeu! Lagarto come o papel!");
-        } else if (jogada == 1) {
-            System.out.println("Ganhou! Papel refuta o Spock!");
+            System.out.println("Ganhou! Papel embrulha o pedra!");
         } else if (jogada == 2 && computador == 1) {
             System.out.println("Ganhou. Tesoura corta o papel!");
         } else if (jogada == 2 && computador == 2) {
             System.out.println("Empate! Tesoura empata com tesoura!");
         } else if (jogada == 2 && computador == 3) {
             System.out.println("Perdeu! Pedra quebra a tesoura!");
-        } else if (jogada == 2 && computador == 4) {
-            System.out.println("Ganhou! Tesoura decapta o lagarto!");
-        } else if (jogada == 2) {
-            System.out.println("Perdeu! Spock derrete a tesoura!");
         } else if (jogada == 3 && computador == 1) {
-            System.out.println("Perdeu. Papel embrulha a pedar!");
+            System.out.println("Perdeu. Papel embrulha a pedra!");
         } else if (jogada == 3 && computador == 2) {
-            System.out.println("Empate! Tesoura empata com tesoura!");
+            System.out.println("Ganhou! Pedra quebra a tesoura!");
         } else if (jogada == 3 && computador == 3) {
             System.out.println("Empatou! Pedra empata com pedra!");
-        } else if (jogada == 3 && computador == 4) {
-            System.out.println("Ganhou! Pedra esmaga o lagarto!");
-        } else if (jogada == 3) {
-            System.out.println("Perdeu! Spock vaporiza a apedra!");        
-
+        } 
         in.close();
     }
-}
+
 ```
