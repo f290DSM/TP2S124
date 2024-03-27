@@ -1,6 +1,6 @@
 package model;
 
-public class Papel extends Algoritmo{
+public class Papel implements Algoritmo{
 
     @Override
     public void executar(Tipo tipo) {

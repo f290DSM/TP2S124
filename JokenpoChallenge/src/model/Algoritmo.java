@@ -1,5 +1,5 @@
 package model;
 
-public abstract class Algoritmo {
+public interface Algoritmo {
     public abstract void executar(Tipo tipo);
 }
