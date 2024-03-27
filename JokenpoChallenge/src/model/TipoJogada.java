@@ -1,6 +1,8 @@
 package model;
 
-public enum Tipo {
+import java.util.stream.Stream;
+
+public enum TipoJogada {
     PAPEL(1),
     TESOURA(2),
     PEDRA(3),
@@ -13,16 +15,16 @@ public enum Tipo {
         return id;
     }
 
-    Tipo(Integer id) {
+    TipoJogada(Integer id) {
         
         this.id = id;
     }
 
-    public static Tipo getTipo(Integer id) throws Exception {
+    public static TipoJogada getTipo(Integer id) throws RuntimeException {
         return Stream.of(values())
                 .filter(t -> t.getId().equals(id))
                 .findFirst()
-                .orElseThrows(() -> new RunTimeException("Id invalido para os algoritmos. ID: " + id));
+                .orElseThrow(() -> new RuntimeException("Id invalido para os algoritmos. ID: " + id));
     }
 
 }

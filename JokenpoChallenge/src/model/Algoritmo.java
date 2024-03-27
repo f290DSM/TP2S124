@@ -1,5 +1,5 @@
 package model;
 
 public interface Algoritmo {
-    void executar(Tipo tipo);
+    void executar(TipoJogada tipoJogada);
 }

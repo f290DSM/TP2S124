@@ -8,8 +8,8 @@ public class Jokenpo {
         this.algoritmo = algoritmo;
     }
 
-    public void jogar(Tipo tipo) {
-        this.algoritmo.executar(tipo);
+    public void jogar(TipoJogada tipoJogada) {
+        this.algoritmo.executar(tipoJogada);
     }
 
 }

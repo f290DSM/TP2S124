@@ -3,8 +3,8 @@ package model;
 public class Tesoura implements Algoritmo {
 
     @Override
-    public void executar(Tipo tipo) {
-        switch (tipo) {
+    public void executar(TipoJogada tipoJogada) {
+        switch (tipoJogada) {
             case PAPEL:
                 System.out.println("Ganhou! Tesoura corta o Papel");
                 break;

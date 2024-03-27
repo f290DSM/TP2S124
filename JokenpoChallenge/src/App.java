@@ -2,7 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import model.Algoritmo;
-import model.Tipo;
+import model.TipoJogada;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -21,7 +21,7 @@ public class App {
 
         in.close();
     }
-    public static Algoritmo getAlgoritmo(Tipo tipo) {
+    public static Algoritmo getAlgoritmo(TipoJogada tipoJogada) {
         //TODO: Implementar a lógica para criar os algoritmos com base no Tipo.
         return null;
     }
