@@ -45,3 +45,31 @@ Utilizem a linguagem de sua preferencia e o paradigma de programação ao qual e
     }
 
 ```
+
+## Design Pattern Strategy
+
+```mermaid
+classDiagram
+    class Jokenpo {
+        - strategy
+        + jogar(tipo)
+    }
+    class Strategy { 
+        <<interface>> 
+        + execute(tipo)
+    }
+    class ConcreteStrategyA {
+        + execute(tipo)
+    }
+    class ConcreteStrategyB {
+        + execute(tipo)
+    }
+    class App {
+        - context
+    }
+    
+    Jokenpo <-- App
+    Jokenpo *--> Strategy
+    Strategy <|.. ConcreteStrategyA
+    Strategy <|.. ConcreteStrategyB
+```
