@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/HandsOnMVC/HandsOnMVC.iml" filepath="$PROJECT_DIR$/HandsOnMVC/HandsOnMVC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JokenpoChallenge/JokenpoChallenge.iml" filepath="$PROJECT_DIR$/JokenpoChallenge/JokenpoChallenge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/TP2S124.iml" filepath="$PROJECT_DIR$/.idea/TP2S124.iml" />
+    </modules>
+  </component>
+</project>
