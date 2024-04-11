@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 import model.Usuario;
-import model.UsuarioRepository;
+import model.reposirory.UsuarioRepository;
 
 public class UsuarioService {
 
@@ -34,7 +34,8 @@ public class UsuarioService {
     }
 
     private void validarId(Integer id) {
-        if (Objects.isNull(id)) throw new RuntimeException("Id não pode ser nulo");
+        if (Objects.isNull(id))
+            throw new RuntimeException("Id não pode ser nulo");
     }
 
     private void validar(Usuario usuario, boolean validarId) {
@@ -53,7 +54,9 @@ public class UsuarioService {
             throw new RuntimeException("Senha de usuário inválida.");
         }
 
-        if (usuario.getEmail().isEmpty() || usuario.getEmail().length() < 5 || usuario.getEmail().contains("@")) {
+        if (usuario.getEmail().isEmpty()
+                || usuario.getEmail().length() < 5
+                || !usuario.getEmail().contains("@")) {
             throw new RuntimeException("E-mail inválido.");
         }
     }
