@@ -5,11 +5,13 @@ import java.util.List;
 import model.Usuario;
 
 public interface UsuarioRepository {
-    Usuario criar(Usuario usuario);
+    void criar(Usuario usuario) throws Exception;
+
+    Usuario buscarPorEmail(String email);
 
     List<Usuario> obterTodos();
 
     Usuario atualizar(Usuario usuario);
 
-    void excluir(Integer id);
+    void excluir(Integer id) throws Exception ;
 }

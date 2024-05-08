@@ -2,6 +2,7 @@ package model.reposirory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import model.Usuario;
 
@@ -10,9 +11,17 @@ public class UsuarioMemoriaRepositoryImpl implements UsuarioRepository {
     private List<Usuario> usuarios = new ArrayList<>();
 
     @Override
-    public Usuario criar(Usuario usuario) {
+    public void criar(Usuario usuario) {
         usuarios.add(usuario);
-        return usuario;
+    }
+
+    @Override
+    public Usuario buscarPorEmail(String email) {
+        return usuarios
+                .stream()
+                .filter(u -> u.getEmail().equals(email))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
@@ -22,27 +31,23 @@ public class UsuarioMemoriaRepositoryImpl implements UsuarioRepository {
 
     @Override
     public Usuario atualizar(Usuario usuario) {
-        Usuario usuarioAtualizado = null;
-        for (int i = 0; i < usuarios.size(); i++) {
-            usuarioAtualizado = usuarios.get(i);
-            if (usuario.getId().equals(usuarioAtualizado.getId())) {
-                usuarioAtualizado.setNome(usuario.getNome());
-                usuarioAtualizado.setEmail(usuario.getEmail());
-                usuarioAtualizado.setSenha(usuario.getSenha());
-                break;
-            }
-        }
-        return usuarioAtualizado;
+        return usuarios
+                .stream()
+                .filter(u -> u.getEmail().equals(usuario.getEmail()))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
-    public void excluir(Integer id) {
-        for (int i = 0; i < usuarios.size(); i++) {
-            if (usuarios.get(i).getId().equals(id)) {
-                usuarios.remove(i);
-                break;
-            }
-        }
-    }
+    public void excluir(Integer id) throws Exception {
+        Optional<Usuario> usuario = usuarios
+                .stream().filter(u -> u.getId().equals(id))
+                .findFirst();
 
+        if(usuario.isEmpty()) {
+            throw new Exception("Usuário não ");
+        }
+
+        usuario.ifPresent(u -> usuarios.remove(u));
+    }
 }

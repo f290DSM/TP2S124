@@ -2,6 +2,7 @@ package services;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.*;
 
 import model.Usuario;
 import model.reposirory.UsuarioRepository;
@@ -9,14 +10,20 @@ import model.reposirory.UsuarioRepository;
 public class UsuarioService {
 
     private final UsuarioRepository repository;
+    private final Logger logger;
 
     public UsuarioService(UsuarioRepository repository) {
         this.repository = repository;
+        this.logger = Logger.getLogger(UsuarioService.class.getName());
     }
 
-    public Usuario criar(Usuario usuario) {
-        validar(usuario, false);
-        return repository.criar(usuario);
+    public void criar(Usuario usuario) {
+        try {
+            validar(usuario, false);
+            repository.criar(usuario);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Falha ao salvar usuário", e);
+        }
     }
 
     public List<Usuario> obterTodos() {
@@ -29,6 +36,7 @@ public class UsuarioService {
     }
 
     public void excluir(Integer id) {
+        try {
         validarId(id);
         repository.excluir(id);
     }
