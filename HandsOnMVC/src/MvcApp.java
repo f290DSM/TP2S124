@@ -19,7 +19,9 @@ public class MvcApp {
         Connection conexao = ConexaoFactory.getConexao();
         IUsuarioDAO dao = new UsuarioDAO(conexao);
         UsuarioRepository reposirory = new UsuarioRepositoryMySQLImpl(dao);
-        UsuarioService service = new UsuarioService(reposirory);
+
+        UsuarioMemoriaRepositoryImpl repo = new UsuarioMemoriaRepositoryImpl();
+        UsuarioService service = new UsuarioService(repo);
         
         /*
          * Utilize as leituras em console se preferir.
