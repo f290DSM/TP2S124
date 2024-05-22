@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <h1>Notes</h1>
+    <ul th:object="${notes}">
+        <li th:each="note: ${notes}">
+            <span th:text="${note.content}"></span>
+        </li>
+    </ul>
+    <p th:text="${notes}"></p>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>
+
+<!--
+    
+-->

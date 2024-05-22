@@ -20,8 +20,8 @@ public class UsuarioRepositoryMySQLImpl implements UsuarioRepository {
 
     @Override
     public Usuario buscarPorEmail(String email) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPorEmail'");
+        // TODO: Retornar um usuário existente com base no e-mail recebido como parametro.
+        return null;
     }
 
     @Override

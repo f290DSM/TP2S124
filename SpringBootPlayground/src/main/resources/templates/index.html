@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${titulo}">Spring Boot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+</head>
+<body>
+    <h1 th:text="|A soma de 12 + 30 é ${12 + 30}|"></h1>
+    <p th:text="${conteudo}"></p>
+    <a href="#" class="btn btn-primary">Primary</a>
+    <div class="post-it">
+        <div class="post-it-content">
+            <!-- Seu conteúdo aqui -->
+            <h2>Título</h2>
+            <p>Conteúdo do post-it.</p>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>
