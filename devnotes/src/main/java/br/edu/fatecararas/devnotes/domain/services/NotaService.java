@@ -36,4 +36,8 @@ public class NotaService {
                 .collect(Collectors.toList());
     }
 
+    public void apagar(Long id) {
+        repository.deleteById(id);
+    }
+
 }
