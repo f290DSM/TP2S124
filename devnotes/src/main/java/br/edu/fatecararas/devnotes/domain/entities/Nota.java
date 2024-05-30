@@ -1,29 +1,28 @@
 package br.edu.fatecararas.devnotes.domain.entities;
 
-import java.util.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "categorias")
+@Entity(name = "notas")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Categoria {
+public class Nota {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String descricao;
+    @Column(nullable = false, length = 1024)
+    private String conteudo;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "categoria")
-    private List<Nota> notas = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "id_categoria")
+    private Categoria categoria;
 }
