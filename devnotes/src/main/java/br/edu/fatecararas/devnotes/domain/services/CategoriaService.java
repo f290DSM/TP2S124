@@ -7,7 +7,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.edu.fatecararas.devnotes.domain.dto.CategoriaDTO;
+import br.edu.fatecararas.devnotes.api.dto.CategoriaDTO;
+import br.edu.fatecararas.devnotes.api.exceptions.RegraDeNegocioException;
 import br.edu.fatecararas.devnotes.domain.entities.Categoria;
 import br.edu.fatecararas.devnotes.domain.repositories.CategoriaRepository;
 
@@ -34,6 +35,12 @@ public class CategoriaService {
     }
 
     public void excluir(Long id) {
+        Integer existemNotasAssociadas = repository.existemNotasAssociadas(id);
+
+        if (existemNotasAssociadas > 0) {
+            throw new RegraDeNegocioException("Existem notas associadas para a categoria com ID: " + id);
+        }
+
         repository.deleteById(id);
     }
 }

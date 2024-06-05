@@ -1,4 +1,4 @@
-package br.edu.fatecararas.devnotes.resources;
+package br.edu.fatecararas.devnotes.api.resources;
 
 import java.net.URI;
 import java.util.*;
@@ -16,8 +16,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import br.edu.fatecararas.devnotes.domain.dto.CategoriaDTO;
+import br.edu.fatecararas.devnotes.api.dto.CategoriaDTO;
 import br.edu.fatecararas.devnotes.domain.services.CategoriaService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/categorias")
@@ -32,7 +33,7 @@ public class CategoriaResource {
     }
 
     @PostMapping("/categoria")
-    public ResponseEntity<Void> criar(@RequestBody CategoriaDTO dto) {
+    public ResponseEntity<Void> criar(@Valid @RequestBody CategoriaDTO dto) {
         CategoriaDTO categoria = service.criar(dto);
 
         URI uri = ServletUriComponentsBuilder

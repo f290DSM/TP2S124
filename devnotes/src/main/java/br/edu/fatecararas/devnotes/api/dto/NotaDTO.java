@@ -1,4 +1,4 @@
-package br.edu.fatecararas.devnotes.domain.dto;
+package br.edu.fatecararas.devnotes.api.dto;
 
 import br.edu.fatecararas.devnotes.domain.entities.Categoria;
 import jakarta.validation.constraints.NotBlank;

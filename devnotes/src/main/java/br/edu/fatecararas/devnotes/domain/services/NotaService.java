@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import br.edu.fatecararas.devnotes.domain.dto.NotaDTO;
+import br.edu.fatecararas.devnotes.api.dto.NotaDTO;
 import br.edu.fatecararas.devnotes.domain.entities.Nota;
 import br.edu.fatecararas.devnotes.domain.repositories.NotaRepository;
 

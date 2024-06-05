@@ -1,4 +1,4 @@
-package br.edu.fatecararas.devnotes.resources;
+package br.edu.fatecararas.devnotes.api.resources;
 
 import java.util.*;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.fatecararas.devnotes.domain.dto.NotaDTO;
+import br.edu.fatecararas.devnotes.api.dto.NotaDTO;
 import br.edu.fatecararas.devnotes.domain.services.NotaService;
 import jakarta.validation.Valid;
 
