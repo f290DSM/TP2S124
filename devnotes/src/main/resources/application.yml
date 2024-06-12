@@ -1,0 +1,27 @@
+server:
+  port: 9000
+
+spring:
+  profiles:
+    active: test
+
+api: 
+  common:
+    version: 1.0.0
+    title: DevNotes
+    description: API de compartilhamento de notas de desenvolvimento de software e afins.
+    termsOfService: Em progresso...
+    license: Nossa Lincesa
+    licenseUrl: Em progresso...
+    externalDocDesc: WIKI PAGE em progresso
+    externalDocUrl: WIKI URL em progresso...
+    contact:
+      name: Esdras B Silva
+      url: esdras.youtrack.com
+      email: esdras.silva9@fatec.sp.gov.br
+
+springdoc:
+  swagger-ui.path: /openapi/swagger-ui.html
+  api-docs.path: /openapi/v3/api-docs
+  packagesToScan: br.edu.fatecararas.devnotes.api.resources
+  pathsToMatch: /**

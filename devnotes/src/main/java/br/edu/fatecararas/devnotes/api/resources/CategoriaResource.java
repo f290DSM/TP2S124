@@ -18,10 +18,14 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.edu.fatecararas.devnotes.api.dto.CategoriaDTO;
 import br.edu.fatecararas.devnotes.domain.services.CategoriaService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
+@Tag(name = "Categorias", description =
+"Controle de categorias para notas de desenvolvimento.")
 @RestController
 @RequestMapping("/api/v1/categorias")
 public class CategoriaResource {
@@ -29,11 +33,17 @@ public class CategoriaResource {
     @Autowired
     private CategoriaService service;
 
+    @Operation(description = "Listar todas categorias cadastradas na base de dados da API.")
+    @ApiResponses(value = {
+        @ApiResponse(description = "Sucesso na consulta de categorias.", responseCode = "200"),
+        @ApiResponse(description = "Não existem categorias cadastradas", responseCode = "404")
+    })
     @GetMapping("/todas")
     public List<CategoriaDTO> buscarCategorias() {
         return service.buscarTodas();
     }
 
+    //TODO: Criar a documentação com as anotaões Swagger
     @PostMapping("/categoria")
     public ResponseEntity<Void> criar(@Valid @RequestBody CategoriaDTO dto) {
         CategoriaDTO categoria = service.criar(dto);
@@ -48,19 +58,14 @@ public class CategoriaResource {
 
     }
 
+    //TODO: Criar a documentação com as anotaões Swagger
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping("/categoria/{id}")
     public void excluir(@PathVariable("id") Long id) {
         service.excluir(id);
     }
+
+    //TODO: Criar o método buscar uma categoria por id, com a documentação.
+
+    //TODO: Criar um método para alterar uma categoria com a documentação.
 }
-
-/**
- * Requisicao no ThunderClient
- * http://localhost:9000/api/v1/categorias/todas
- */
-
- /**
-  * 
-bit.ly/3R7avBV
-  */

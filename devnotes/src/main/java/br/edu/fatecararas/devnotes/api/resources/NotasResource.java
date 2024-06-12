@@ -26,26 +26,26 @@ public class NotasResource {
         this.service = service;
     }
 
+    //TODO: Criar documentação da criação de uma nova nota.
     @PostMapping("/nota")
     public NotaDTO criar(@RequestBody @Valid NotaDTO dto) {
         return service.criar(dto);
     }
 
+    //TODO: Criar documentação da criação de uma nova nota.
     @GetMapping("/todas")
     public List<NotaDTO> buscarTodas() {
         return service.buscarTodas();
     }
 
+    //TODO: Criar documentação do método de exclusão de nota existente.
     @DeleteMapping("/nota/{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void apagar(@PathVariable("id") Long id) {
         service.apagar(id);
     }
-}
 
-/**
- * Marcelo Salvador, Wesley, Maicon, Isabela, Igor, Maria Vitoria, Beatriz, Bruno,
- * Pietra, Frank, Lucas Arantes, Vior Eduardo, Miguel, Mateus Augusto, Lucas Ferreira,
- * Endrew, Fernando, Rafaela, Mateus Luis, Marina, Leandro Wendel, Roberto, Willian,
- * Lucas Assis, Ana Laura, 2 x Barbieri (Gabriel, Miguel)
- */
+    //TODO: Criar método de busca de nota existen por ID com a documentação.
+
+    //TODO: Criar método de alteração de nota existente com a documentação.
+}

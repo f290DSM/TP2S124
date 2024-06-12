@@ -30,6 +30,8 @@ public class NotaService {
     }
 
     public List<NotaDTO> buscarTodas() {
+
+        //TODO: Incluir lançamento de exceção quando não houverem notas cadastradas.
         return repository.findAll()
                 .stream()
                 .map(n -> mapper.map(n, NotaDTO.class))

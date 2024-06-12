@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.fatecararas.devnotes.api.dto.CategoriaDTO;
+import br.edu.fatecararas.devnotes.api.exceptions.NaoEncontradoException;
 import br.edu.fatecararas.devnotes.api.exceptions.RegraDeNegocioException;
 import br.edu.fatecararas.devnotes.domain.entities.Categoria;
 import br.edu.fatecararas.devnotes.domain.repositories.CategoriaRepository;
@@ -15,16 +16,23 @@ import br.edu.fatecararas.devnotes.domain.repositories.CategoriaRepository;
 @Service
 public class CategoriaService {
 
-    @Autowired
-    private CategoriaRepository repository;
-    @Autowired
-    private ModelMapper mapper;
+    private final CategoriaRepository repository;
+    private final ModelMapper mapper;
 
-    public List<CategoriaDTO> buscarTodas() {
-        return repository.findAll()
+    public CategoriaService(CategoriaRepository repository, ModelMapper mapper) {
+        this.repository = repository;
+        this.mapper = mapper;
+    }
+
+    public List<CategoriaDTO> buscarTodas() throws NaoEncontradoException{
+        List<CategoriaDTO> categorias = repository.findAll()
                 .stream()
                 .map(categoria -> mapper.map(categoria, CategoriaDTO.class))
                 .collect(Collectors.toList());
+
+        if (categorias.isEmpty()) throw new NaoEncontradoException("Ainda não existem categorias cadastradas.");
+
+        return categorias;
 
     }
 

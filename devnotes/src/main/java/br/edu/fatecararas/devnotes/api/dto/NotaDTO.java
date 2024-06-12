@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class NotaDTO {
     private Long id;
-    @NotBlank(message = "O conteúdo é obrigatório")
+    @NotBlank(message = "O conteúdo da nota é obrigatório.")
     private String conteudo;
-    @NotNull(message = "Categoria é obrigatória")
+    @NotNull(message = "Categoria é obrigatória.")
     private Categoria categoria;
 }

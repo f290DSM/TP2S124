@@ -1,5 +1,6 @@
 package br.edu.fatecararas.devnotes.api.exceptions;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -13,19 +14,25 @@ public class ApplicationExceptionHandler {
     
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ApiError tratarRegraDeNegocioException(RegraDeNegocioException rne) {
-        return new ApiError(rne);
+    public ApiError tratarRegraDeNegocioException(RegraDeNegocioException rne, HttpServletRequest request) {
+        return new ApiError(rne, request.getRequestURI());
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ApiError tratarNaoEncontradoException(NaoEncontradoException nee, HttpServletRequest request) {
+        return new ApiError(nee, request.getRequestURI());
     }
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ApiError tratarArgumentosInvalidosException(MethodArgumentNotValidException manve) {
-        return new ApiError(manve.getBindingResult());
+    public ApiError tratarArgumentosInvalidosException(MethodArgumentNotValidException manve, HttpServletRequest request) {
+        return new ApiError(manve.getBindingResult(), request.getRequestURI());
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
     @ExceptionHandler
-    public ResponseEntity<?> tratarStatusCodeException(ResponseStatusException rsce) {
-        return new ResponseEntity(new ApiError(rsce), rsce.getStatusCode());
+    public ResponseEntity<?> tratarStatusCodeException(ResponseStatusException rsce, HttpServletRequest request) {
+        return new ResponseEntity(new ApiError(rsce, request.getRequestURI()), rsce.getStatusCode());
     }
 }
